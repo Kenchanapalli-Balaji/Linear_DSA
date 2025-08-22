@@ -1,4 +1,4 @@
-// leetcode - 328
+  // leetcode - 328
 // https://youtu.be/qf6qp7GzD5Q
 /*
 Given the head of a singly linked list, group all the nodes with odd indices together 
@@ -75,7 +75,7 @@ public class Odd_And_Even_Linked_List
 			head=node;
 			return;
 		}
-		Node temp=head;
+		Node temp=head; 
 		while(temp.next!=null)
 		{
 			temp=temp.next;

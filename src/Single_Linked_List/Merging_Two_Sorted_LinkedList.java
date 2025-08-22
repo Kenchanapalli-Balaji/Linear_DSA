@@ -2,7 +2,7 @@ package Single_Linked_List;
 public class Merging_Two_Sorted_LinkedList 
 {
 	class Node
-	{
+	{ 
 		int data;
 		Node next;
 		Node(int data)
@@ -126,8 +126,8 @@ public class Merging_Two_Sorted_LinkedList
 		b.add(6);
 		System.out.println(a);
 		System.out.println(b);
-		System.out.println(a.merge(a.head, b.head));
-		merging(a.head, b.head);
+		//System.out.println(a.merge(a.head, b.head));
+		System.out.println(merging(a.head, b.head));
 		
 	}
 }
