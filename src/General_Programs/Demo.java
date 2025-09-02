@@ -1,40 +1,64 @@
 package General_Programs;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Demo 
 {
 	
 	public static void main(String[] args) 
 	{
-		int arr[][]= {{1,2,3},
-				  {4,5,6},
-				  {7,8,9}};
-		List<Integer> list=new ArrayList<Integer>();
-		int top=0; int bottom=arr.length-1;
-		int left=0; int right=arr[0].length-1;
-		while(top<=bottom && left<=right)
+		int arr[]= {9,8,7,6,4,3,2,1};
+		System.out.println(Arrays.toString(arr));
+		sort(arr,0,arr.length-1);
+		System.out.println(Arrays.toString(arr));
+	}
+	public static void sort(int[] arr, int left, int right)
+	{
+		if(left<right)
 		{
-			for(int i=left;i<=right;i++)
-			{
-				list.add(arr[top][i]);
-			}
-			top++;
-			for(int i=top;i<=bottom;i++)
-				list.add(arr[i][right]);
-			right--;
-			if(!(top<=bottom && left<=right))
-				break;
-			for(int i=right;i>=left;i--)
-				list.add(arr[bottom][i]);
-			bottom--;
-			for(int i=bottom;i>=top;i--)
-				list.add(arr[i][left]);
-			left++;
-			
+			int mid=(left+right)/2;
+			sort(arr,left,mid);
+			sort(arr,mid+1,right);
+			merge(arr,left,mid,right);
 		}
-		System.out.println(list);
+	}
+	static void merge(int[] arr, int left, int mid, int right)
+	{
+		int n1=mid-left+1; int n2=right-mid;
+		int[] l=new int[n1]; int[] r=new int[n2];
+		for(int i=0;i<n1;i++)
+		{
+			l[i]=arr[left+i];
+		}
+		for(int i=0;i<n2;i++)
+			r[i]=arr[mid+1+i];
+				
+		int k=left; int i=0,j=0;
+		while(i<n1 && j<n2)
+		{
+			if(l[i]<r[j])
+			{
+				arr[k]=l[i];
+				i++;
+			}
+			else
+			{
+				arr[k]=r[j];
+				j++;
+			}
+			k++;
+		}
+		while(i<n1)
+		{
+			arr[k]=l[i];
+			i++;
+			k++;
+		}
+		while(j<n2)
+		{
+			arr[k]=r[j];
+			j++;
+			k++;
+		}
 	}
 }
